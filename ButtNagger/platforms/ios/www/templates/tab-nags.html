@@ -1,0 +1,15 @@
+<ion-view view-title="Nags">
+    <ion-content>
+        <ion-list>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="nag in nags" type="item-text-wrap" href="#/tab/nags/{{nag.id}}">
+                <img ng-src="{{nag.face}}">
+                <h2>{{nag.name}}</h2>
+                <p>{{nag.lastText}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+                <ion-option-button class="button-positive" ng-click="remove(nag)">
+                    Done
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

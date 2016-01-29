@@ -7,6 +7,9 @@ angular.module('starter.controllers', [])
     $scope.remove = function (nag) {
         Nags.remove(nag);
     }
+    $scope.goBack = function () {
+        $ionicHistory.goBack();
+    }
 })
 
 .controller('NagDetailCtrl', function ($scope, $stateParams, Nags, $ionicHistory, $state) {

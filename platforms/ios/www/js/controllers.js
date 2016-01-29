@@ -24,14 +24,14 @@ angular.module('starter.controllers', [])
             id: 1,
             title: "Message Title",
             message: "Message Text",
-            at: date,
+            every: 'minute',
             sound: 'file://beep.caf',
             icon: "http://domain.com/icon.png"
         });
 
         cordova.plugins.notification.local.on("click", function (notification) {
             debugger;
-            joinMeeting(notification.data.meetingId);
+            alert(notification.data.meetingId);
         });
     }
 })

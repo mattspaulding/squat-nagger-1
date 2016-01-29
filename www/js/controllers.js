@@ -22,8 +22,8 @@ angular.module('starter.controllers', [])
 
         cordova.plugins.notification.local.schedule({
             id: 1,
-            title: "Message Title",
-            message: "Message Text",
+            title: nag.name,
+            message: nag.lastText,
             every: 'minute',
             sound: 'file://beep.caf',
             icon: "https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png"

@@ -26,14 +26,12 @@ angular.module('starter.controllers', [])
             message: nag.lastText,
             every: 'minute',
             sound: 'file://beep.caf',
-            icon: "https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png"
+            icon: "https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png",
+            data: { nagId: nag.id }
         });
 
         cordova.plugins.notification.local.on("click", function (notification) {
-            debugger;
-            alert("hey");
-            $state.go('tab.account')
-
+            $state.go('tab.nag-detail', { id: notification.data.nagId })
         });
     }
 })

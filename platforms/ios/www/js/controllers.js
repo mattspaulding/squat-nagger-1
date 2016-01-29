@@ -9,7 +9,7 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('NagDetailCtrl', function ($scope, $stateParams) {
+.controller('NagDetailCtrl', function ($scope, $stateParams,Nags, $ionicHistory,$state) {
     $scope.nag = Nags.get($stateParams.nagId);
     $scope.remove = function (nag) {
         Nags.remove(nag);

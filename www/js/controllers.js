@@ -11,7 +11,7 @@ angular.module('starter.controllers', [])
         $ionicHistory.nextViewOptions({
             disableBack: true
         });
-        $state.go('tab.nag-detail', { nagId: nag0.id });
+        $state.go('tab.nag-detail', { nagId: nagId });
     }
 })
 

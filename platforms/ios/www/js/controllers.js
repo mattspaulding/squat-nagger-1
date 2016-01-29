@@ -25,7 +25,8 @@ angular.module('starter.controllers', [])
 
     $scope.scheduleNagger = function (nagger) {
         debugger;
-        $cordovaLocalNotification.cancelAll().then(function (result) {
+        cordova.plugins.notification.local.cancelAll(function() {
+            alert("done");
              $scope.nags = Nags.all();
             var nag = $scope.nags[0];
             var nag1 = $scope.nags[1];
@@ -50,7 +51,8 @@ angular.module('starter.controllers', [])
                 icon: "https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png",
                 data: { nagId: nag1.id }
             }]);
-        });
+        }, this);
+
 
 
         cordova.plugins.notification.local.on("click", function (notification) {

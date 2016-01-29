@@ -17,11 +17,12 @@ angular.module('starter.controllers', [])
     }
     $scope.notification = function (nag) {
         debugger;
+     
        // var sound = device.platform == 'Android' ? 'file://sound.mp3' : 'file://beep.caf';
         var date = new Date();
 
         cordova.plugins.notification.local.schedule({
-            id: 1,
+            id: nag.id,
             title: nag.name,
             message: nag.lastText,
             every: 'minute',
@@ -31,8 +32,8 @@ angular.module('starter.controllers', [])
         });
 
         cordova.plugins.notification.local.on("click", function (notification) {
-            alert(notification.data.nagId);
-            $state.go('tab.nag-detail', { nagId: notification.data.nagId });
+            alert(notification.id);
+            $state.go('tab.nag-detail', { nagId: notification.id });
         });
     }
 })

@@ -31,7 +31,7 @@ angular.module('starter.controllers', [])
 
         cordova.plugins.notification.local.on("click", function (notification) {
             debugger;
-            alert(notification.data.meetingId);
+            alert("hey");
         });
     }
 })

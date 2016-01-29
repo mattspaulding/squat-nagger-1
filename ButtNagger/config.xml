@@ -92,4 +92,5 @@
   </platform>
   <plugin name="org.apache.cordova.dialogs" version="0.3.0" />
   <plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.4" src="https://github.com/katzer/cordova-plugin-local-notifications" />
+  <plugin name="org.apache.cordova.splashscreen" version="1.0.0" />
 </widget>

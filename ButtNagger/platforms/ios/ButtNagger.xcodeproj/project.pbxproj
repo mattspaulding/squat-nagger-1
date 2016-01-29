@@ -42,6 +42,7 @@
 		D93B12F8355F48ACB3135954 /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDC2883B04487D9576A769 /* CDVNotification.m */; };
 		843C4F2FAE7E4C90B1ED40AC /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49F61287B26B4F63B7A99BB2 /* CDVNotification.bundle */; };
 		441496BC05AC4699BD152C8A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5808ED93C76540D989FC0CE2 /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		99C97C6747E14DD9B85781F2 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 38759153494446E79CF2C5E6 /* CDVSplashScreen.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,8 @@
 		0CBB8E1A22AC4C1693E9560D /* CDVNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVNotification.h"; path = "org.apache.cordova.dialogs/CDVNotification.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		49F61287B26B4F63B7A99BB2 /* CDVNotification.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "CDVNotification.bundle"; path = "Resources\CDVNotification.bundle"; sourceTree = "<group>"; };
 		5808ED93C76540D989FC0CE2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		38759153494446E79CF2C5E6 /* CDVSplashScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVSplashScreen.m"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		0AC214718A4E4919BADED85D /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +217,8 @@
 			children = (
 				0FCDC2883B04487D9576A769 /* CDVNotification.m */,
 				0CBB8E1A22AC4C1693E9560D /* CDVNotification.h */,
+				38759153494446E79CF2C5E6 /* CDVSplashScreen.m */,
+				0AC214718A4E4919BADED85D /* CDVSplashScreen.h */,
 			);
 			name = Plugins;
 			path = "ButtNagger/Plugins";
@@ -400,6 +405,7 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				D93B12F8355F48ACB3135954 /* CDVNotification.m in Sources */,
+				99C97C6747E14DD9B85781F2 /* CDVSplashScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

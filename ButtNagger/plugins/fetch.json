@@ -11,5 +11,11 @@
             "url": "https://github.com/katzer/cordova-plugin-local-notifications",
             "subdir": "."
         }
+    },
+    "org.apache.cordova.splashscreen": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.splashscreen"
+        }
     }
 }

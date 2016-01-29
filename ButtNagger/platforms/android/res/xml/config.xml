@@ -4,6 +4,10 @@
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
     <icon density="ldpi" src="res/icons/android/icon-36-ldpi.png" />
     <icon density="mdpi" src="res/icons/android/icon-48-mdpi.png" />
     <icon density="hdpi" src="res/icons/android/icon-72-hdpi.png" />
@@ -27,4 +31,5 @@
     <preference name="windows-phone-target-version" value="8.1" />
     <plugin name="org.apache.cordova.dialogs" version="0.3.0" />
     <plugin name="de.appplant.cordova.plugin.local-notification" src="https://github.com/katzer/cordova-plugin-local-notifications" version="0.8.4" />
+    <plugin name="org.apache.cordova.splashscreen" version="1.0.0" />
 </widget>

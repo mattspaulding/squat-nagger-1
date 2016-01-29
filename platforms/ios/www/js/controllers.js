@@ -34,7 +34,7 @@ angular.module('starter.controllers', [])
         oneMinute.setMinutes(oneMinute.getMinutes() + 1);
         cordova.plugins.notification.local.schedule([{
             id: nag.id,
-            title: nag.name,
+            title: 'notif0',//nag.name,
             message: nag.lastText,
             at: date1,
             sound: 'file://beep.caf',
@@ -42,7 +42,7 @@ angular.module('starter.controllers', [])
             data: { nagId: nag.id }
         }, {
             id: nag1.id,
-            title: nag1.name,
+            title:'notif1',// nag1.name,
             message: nag1.lastText,
             at: oneMinute,
             sound: 'file://beep.caf',

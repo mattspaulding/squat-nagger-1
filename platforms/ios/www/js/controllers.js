@@ -13,7 +13,7 @@ angular.module('starter.controllers', [])
     $scope.nag = Nags.get($stateParams.nagId);
     $scope.remove = function (nag) {
         Nags.remove(nag);
-        $ionicHistory.goBack();
+        $state.go('tab.nags');
     }
    
 })

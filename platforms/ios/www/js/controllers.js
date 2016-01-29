@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
             message: "Message Text",
             every: 'minute',
             sound: 'file://beep.caf',
-            icon: "http://domain.com/icon.png"
+            icon: "https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png"
         });
 
         cordova.plugins.notification.local.on("click", function (notification) {

@@ -2,13 +2,16 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function ($scope) { })
 
-.controller('NagsCtrl', function ($scope, Nags) {
+.controller('NagsCtrl', function ($scope, Nags, $ionicHistory, $state) {
     $scope.nags = Nags.all();
     $scope.remove = function (nag) {
         Nags.remove(nag);
     }
-    $scope.goBack = function () {
-        $ionicHistory.goBack();
+    $scope.detail = function (nagId) {
+        $ionicHistory.nextViewOptions({
+            disableBack: true
+        });
+        $state.go('tab.nag-detail', { nagId: nag0.id });
     }
 })
 
@@ -16,6 +19,12 @@ angular.module('starter.controllers', [])
     $scope.nag = Nags.get($stateParams.nagId);
     $scope.remove = function (nag) {
         Nags.remove(nag);
+        $ionicHistory.nextViewOptions({
+            disableBack: true
+        });
+        $state.go('tab.nags');
+    }
+    $scope.goBack = function () {
         $ionicHistory.nextViewOptions({
             disableBack: true
         });

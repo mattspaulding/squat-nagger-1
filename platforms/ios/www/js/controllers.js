@@ -31,7 +31,7 @@ angular.module('starter.controllers', [])
         });
 
         cordova.plugins.notification.local.on("click", function (notification) {
-            $state.go('tab.nag-detail', { id: notification.data.nagId })
+            $state.go('tab.nag-detail', { nagId: notification.data.nagId })
         });
     }
 })

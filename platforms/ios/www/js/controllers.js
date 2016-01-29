@@ -13,6 +13,9 @@ angular.module('starter.controllers', [])
     $scope.nag = Nags.get($stateParams.nagId);
     $scope.remove = function (nag) {
         Nags.remove(nag);
+        $ionicHistory.nextViewOptions({
+            disableBack: true
+        });
         $state.go('tab.nags');
     }
 
@@ -66,6 +69,9 @@ angular.module('starter.controllers', [])
                 data: { nagId: nag3.id }
             }]);
 
+            $ionicHistory.nextViewOptions({
+                disableBack: true
+            });
             $state.go('tab.nag-detail', { nagId: nag0.id });
 
         }, this);

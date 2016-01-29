@@ -48,4 +48,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="windows-target-version" value="8.1" />
     <preference name="windows-phone-target-version" value="8.1" />
+    <feature name="Notification">
+        <param name="ios-package" value="CDVNotification" />
+    </feature>
 </widget>

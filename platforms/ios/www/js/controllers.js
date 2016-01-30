@@ -64,7 +64,7 @@ angular.module('starter.controllers', [])
             });
 
             cordova.plugins.notification.local.on("trigger", function (notification) {
-                alert("triggered: " + notification.id);
+                Nags.enable(notification.id);
             });
       
 

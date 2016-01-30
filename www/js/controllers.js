@@ -48,6 +48,8 @@ angular.module('starter.controllers', [])
         $scope.nagger.nags.forEach(function (nag, index) {
             var date = new Date();
             date.setDate(date.getDate() + nag.date);
+            var h = date.getHours();
+            var m = date.getMinutes();
             date.setHours(nag.hour);
             date.setMinutes(nag.minute);
             var d = date.toDateString() + date.toTimeString();

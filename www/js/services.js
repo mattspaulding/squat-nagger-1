@@ -12,22 +12,22 @@ angular.module('starter.services', [])
             title: '10 Squats',
             message: 'Let\'s start off easy.',
             date: 0,
-            hour: 0,
-            minute:18
+            hour: 1,
+            minute:29
         }, {
             id: 101,
             title: '15 Squats',
             message: 'Let\'s do more.',
             date: 0,
-            hour: 0,
-            minute: 20
+            hour: 1,
+            minute: 30
         }, {
             id: 102,
             title: '20 Squats',
             message: 'Let\'s burn it.',
             date: 0,
-            hour: 0,
-            minute:21
+            hour: 1,
+            minute:31
         }]
     }];
 

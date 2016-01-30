@@ -58,6 +58,14 @@ angular.module('starter.controllers', [])
                 notifications.push(notification);
             });
             cordova.plugins.notification.local.schedule(notifications);
+
+            cordova.plugins.notification.local.on("click", function (notification) {
+                $state.go('tab.nag-detail', { nagId: notification.id });
+            });
+
+            cordova.plugins.notification.local.on("trigger", function (notification) {
+                alert("triggered: " + notification.id);
+            });
         }, this);
 
 
@@ -66,13 +74,6 @@ angular.module('starter.controllers', [])
         });
         $state.go('tab.nag-detail', { nagId: $scope.nagger.nags[0].id });
 
-        cordova.plugins.notification.local.on("click", function (notification) {
-            $state.go('tab.nag-detail', { nagId: notification.id });
-        });
-
-
-        cordova.plugins.notification.local.on("trigger", function (notification) {
-            alert("triggered: " + notification.id);
-        });
+      
     };
 });

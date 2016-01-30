@@ -10,25 +10,22 @@ angular.module('starter.services', [])
         level: 'Easy',
         nags: [{
             id: 100,
-            title: '10 Squats',
-            message: 'Let\'s start off easy.',
-            date: 0,
-            hour: 2,
-            minute: 27
+            title: 'Hello',
+            message: 'Welcome to Butt Nagger!'
         }, {
             id: 101,
             title: '15 Squats',
             message: 'Let\'s do more.',
             date: 0,
-            hour: 2,
-            minute: 43
+            hour: 3,
+            minute: 6
         }, {
             id: 102,
             title: '20 Squats',
             message: 'Let\'s burn it.',
             date: 0,
-            hour: 2,
-            minute: 44
+            hour: 3,
+            minute: 7
         }]
     }];
 

@@ -46,16 +46,18 @@ angular.module('starter.controllers', [])
             $scope.nagger = Nags.setCurrentNaggerByName('Marin');
             var notifications = [];
             $scope.nagger.nags.forEach(function (nag, index) {
-                var date = new Date();
-                date.setDate(date.getDate() + nag.date);
-                date.setHours(nag.hour);
-                date.setMinutes(nag.minute);
-                var notification = {};
-                notification.id = nag.id;
-                notification.title = nag.title;
-                notification.message = nag.message;
-                notification.date = date;
-                notifications.push(notification);
+                if (nag.date != null) {
+                    var date = new Date();
+                    date.setDate(date.getDate() + nag.date);
+                    date.setHours(nag.hour);
+                    date.setMinutes(nag.minute);
+                    var notification = {};
+                    notification.id = nag.id;
+                    notification.title = nag.title;
+                    notification.message = nag.message;
+                    notification.date = date;
+                    notifications.push(notification);
+                }
             });
             cordova.plugins.notification.local.schedule(notifications);
 
@@ -66,12 +68,12 @@ angular.module('starter.controllers', [])
             cordova.plugins.notification.local.on("trigger", function (notification) {
                 Nags.enable(notification.id);
             });
-      
 
-        $ionicHistory.nextViewOptions({
-            disableBack: true
-        });
-        $state.go('tab.nag-detail', { nagId: $scope.nagger.nags[0].id });
+
+            $ionicHistory.nextViewOptions({
+                disableBack: true
+            });
+            $state.go('tab.nag-detail', { nagId: $scope.nagger.nags[0].id });
 
         }, this);
 

@@ -7,6 +7,7 @@ angular.module('starter.controllers', [])
 
     $scope.remove = function (nag) {
         Nags.remove(nag);
+        $scope.nagger = Nags.getCurrentNagger();
     }
     $scope.detail = function (nagId) {
         $ionicHistory.nextViewOptions({

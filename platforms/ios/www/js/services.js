@@ -20,14 +20,14 @@ angular.module('starter.services', [])
             title: '15 Squats',
             message: 'Let\'s do more.',
             date: 0,
-            hour: 3,
+            hour: 9,
             minute: 14
         }, {
             id: 102,
             title: '20 Squats',
             message: 'Let\'s burn it.',
             date: 0,
-            hour: 3,
+            hour: 10,
             minute: 15
         }]
     }];

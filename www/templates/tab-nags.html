@@ -1,10 +1,10 @@
 <ion-view view-title="Nags">
     <ion-content>
         <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="nag in nags" type="item-text-wrap" ng-click="detail(nag.id)">
-                <img ng-src="{{nag.face}}">
-                <h2>{{nag.name}}</h2>
-                <p>{{nag.lastText}}</p>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="nag in nagger.nags" type="item-text-wrap" ng-click="detail(nag.id)">
+                <img ng-src="{{nagger.face}}">
+                <h2>{{nag.title}}</h2>
+                <p>{{nag.message}}</p>
                 <i class="icon ion-chevron-right icon-accessory"></i>
                 <ion-option-button class="button-positive" ng-click="remove(nag)">
                     Done

@@ -1,0 +1,33 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-app-event": {
+            "PACKAGE_NAME": "ButtNagger"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "ButtNagger"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "ButtNagger"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "ButtNagger"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "ButtNagger"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "ButtNagger"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "ButtNagger"
+        }
+    },
+    "dependent_plugins": {}
+}

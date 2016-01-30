@@ -50,6 +50,7 @@ angular.module('starter.controllers', [])
             date.setDate(date.getDate() + nag.date);
             date.setHours(nag.hour);
             date.setMinutes(nag.minute);
+            var d = date.toDateString() + date.toTimeString();
             //date.setMinutes(date.getMinutes() + 1);
 
             cordova.plugins.notification.local.schedule({

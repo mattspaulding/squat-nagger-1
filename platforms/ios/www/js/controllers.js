@@ -47,7 +47,7 @@ angular.module('starter.controllers', [])
 
     $scope.scheduleNagger = function (nagger) {
 
-        //cordova.plugins.notification.local.clearAll(function () {
+        cordova.plugins.notification.local.clearAll(function () {
         $scope.nagger = Nags.setCurrentNaggerByName('Marin');
         var notifications = [];
             $scope.nagger.nags.forEach(function (nag, index) {
@@ -55,6 +55,7 @@ angular.module('starter.controllers', [])
                     date.setDate(date.getDate() + nag.day);
                     date.setHours(nag.hour);
                     date.setMinutes(nag.minute);
+                    date.setSeconds(0);
                     $scope.nagger.nags[index].date = date;
                     var notification = {};
                     notification.id = nag.id;
@@ -80,7 +81,7 @@ angular.module('starter.controllers', [])
             });
             $state.go('tab.nag-detail', { nagId: $scope.nagger.nags[0].id });
 
-       // }, this);
+        }, this);
 
     };
 });

@@ -46,7 +46,6 @@ angular.module('starter.controllers', [])
             $scope.nagger = Nags.setCurrentNaggerByName('Marin');
             var notifications = [];
             $scope.nagger.nags.forEach(function (nag, index) {
-                if (nag.date != null) {
                     var date = new Date();
                     date.setDate(date.getDate() + nag.date);
                     date.setHours(nag.hour);
@@ -57,7 +56,7 @@ angular.module('starter.controllers', [])
                     notification.message = nag.message;
                     notification.date = date;
                     notifications.push(notification);
-                }
+               
             });
             cordova.plugins.notification.local.schedule(notifications);
 

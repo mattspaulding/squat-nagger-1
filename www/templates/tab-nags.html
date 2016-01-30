@@ -2,8 +2,8 @@
     <ion-content>
         <div >{{nagger}}</div>
         <div ng-if="nagger==null">nagger null</div>
-  <div ng-if="nagger.nags==null">null here</div>
-        <div ng-if="nagger.nags.length==0">nothing here</div>
+  <div ng-if="nagger.nags==null">nags null</div>
+        <div ng-if="nagger.nags.length==0">nags all gone</div>
         <ion-list>
             <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="nag in nagger.nags" type="item-text-wrap" ng-click="detail(nag.id)" ng-if="nag.enabled">
                 <img ng-src="{{nagger.face}}">

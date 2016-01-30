@@ -11,21 +11,24 @@ angular.module('starter.services', [])
         nags: [{
             id: 100,
             title: 'Hello',
-            message: 'Welcome to Butt Nagger!'
+            message: 'Welcome to Butt Nagger!',
+            date: 0,
+            hour: 0,
+            minute: 0
         }, {
             id: 101,
             title: '15 Squats',
             message: 'Let\'s do more.',
             date: 0,
             hour: 3,
-            minute: 8
+            minute: 14
         }, {
             id: 102,
             title: '20 Squats',
             message: 'Let\'s burn it.',
             date: 0,
             hour: 3,
-            minute: 9
+            minute: 15
         }]
     }];
 
@@ -69,8 +72,7 @@ angular.module('starter.services', [])
             for (var i = 0; i < currentNagger.nags.length; i++) {
                 if (currentNagger.nags[i].id === parseInt(nagId)) {
                     currentNagger.nags[i].enabled = true;
-                    alert(i + " enabled");
-                }
+                  }
             }
             window.localStorage.setItem("currentNagger", JSON.stringify(currentNagger));
         },

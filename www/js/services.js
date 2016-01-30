@@ -12,23 +12,23 @@ angular.module('starter.services', [])
             id: 100,
             title: 'Hello',
             message: 'Welcome to Butt Nagger!',
-            date: 0,
+            day: 0,
             hour: 0,
             minute: 0
         }, {
             id: 101,
             title: '15 Squats',
-            message: 'Let\'s do more.',
-            date: 0,
-            hour: 9,
-            minute: 14
+            message: 'Let\'s do some squats.',
+            day: 0,
+            hour: 16,
+            minute: 16
         }, {
             id: 102,
             title: '20 Squats',
             message: 'Let\'s burn it.',
-            date: 0,
-            hour: 10,
-            minute: 15
+            day: 0,
+            hour: 16,
+            minute: 17
         }]
     }];
 
@@ -66,15 +66,6 @@ angular.module('starter.services', [])
         },
         getCurrentNagger: function () {
             return JSON.parse(window.localStorage.getItem("currentNagger"));
-        },
-        enable: function (nagId) {
-            var currentNagger = JSON.parse(window.localStorage.getItem("currentNagger"));
-            for (var i = 0; i < currentNagger.nags.length; i++) {
-                if (currentNagger.nags[i].id === parseInt(nagId)) {
-                    currentNagger.nags[i].enabled = true;
-                  }
-            }
-            window.localStorage.setItem("currentNagger", JSON.stringify(currentNagger));
         },
         get: function (nagId) {
             var currentNagger = JSON.parse(window.localStorage.getItem("currentNagger"));

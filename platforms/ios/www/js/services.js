@@ -21,14 +21,14 @@ angular.module('starter.services', [])
             message: 'Let\'s do more.',
             date: 0,
             hour: 2,
-            minute: 34
+            minute: 43
         }, {
             id: 102,
             title: '20 Squats',
             message: 'Let\'s burn it.',
             date: 0,
             hour: 2,
-            minute: 35
+            minute: 44
         }]
     }];
 
@@ -72,9 +72,10 @@ angular.module('starter.services', [])
             for (var i = 0; i < currentNagger.nags.length; i++) {
                 if (currentNagger.nags[i].id === parseInt(nagId)) {
                     currentNagger.nags[i].enabled = true;
-                    window.localStorage.setItem("currentNagger", JSON.stringify(currentNagger));
+                    alert(i + " enabled");
                 }
             }
+            window.localStorage.setItem("currentNagger", JSON.stringify(currentNagger));
         },
         get: function (nagId) {
             var currentNagger = JSON.parse(window.localStorage.getItem("currentNagger"));

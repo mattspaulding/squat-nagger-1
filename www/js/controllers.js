@@ -66,14 +66,14 @@ angular.module('starter.controllers', [])
             cordova.plugins.notification.local.on("trigger", function (notification) {
                 alert("triggered: " + notification.id);
             });
-        }, this);
-
+      
 
         $ionicHistory.nextViewOptions({
             disableBack: true
         });
         $state.go('tab.nag-detail', { nagId: $scope.nagger.nags[0].id });
 
-      
+        }, this);
+
     };
 });

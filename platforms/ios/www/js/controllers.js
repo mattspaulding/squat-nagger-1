@@ -45,6 +45,7 @@ angular.module('starter.controllers', [])
         debugger;
         cordova.plugins.notification.local.cancelAll();
         $scope.nagger = Nags.setCurrentNaggerByName('Marin');
+        var notifications = [];
         $scope.nagger.nags.forEach(function (nag, index) {
             var date = new Date();
             date.setDate(date.getDate() + nag.date);
@@ -54,15 +55,16 @@ angular.module('starter.controllers', [])
             date.setMinutes(nag.minute);
             var d = date.toDateString() + date.toTimeString();
             //date.setMinutes(date.getMinutes() + 1);
-
-            cordova.plugins.notification.local.schedule({
-                id: nag.id,
-                title: nag.title,
-                message: nag.message,
-                at: date
-            });
+            var notification={};
+            notification.id=nag.id;
+            notification.title=nag.title;
+            notification.message=nag.message;
+            notification.date=date;
+           notifications.push(notification);
 
         });
+        var notificationSchedule = JSON.stringify(notifications);
+        cordova.plugins.notification.local.schedule(notificationSchedule);
         //$scope.nags = Nags.all();
         //var nag0 = $scope.nags[0];
         //var nag1 = $scope.nags[1];

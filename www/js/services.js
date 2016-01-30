@@ -13,21 +13,21 @@ angular.module('starter.services', [])
             message: 'Let\'s start off easy.',
             date: 0,
             hour: 1,
-            minute:29
+            minute:43
         }, {
             id: 101,
             title: '15 Squats',
             message: 'Let\'s do more.',
             date: 0,
             hour: 1,
-            minute: 30
+            minute: 45
         }, {
             id: 102,
             title: '20 Squats',
             message: 'Let\'s burn it.',
             date: 0,
             hour: 1,
-            minute:31
+            minute:46
         }]
     }];
 

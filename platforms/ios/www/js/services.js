@@ -7,13 +7,14 @@ angular.module('starter.services', [])
         id:1,
         name: 'Marin',
         face: 'https://cdnil0.fiverrcdn.com/photos/2170980/original/DSC_6769.jpg?1448408453',
+        level: 'Easy',
         nags: [{
             id: 100,
             title: '10 Squats',
             message: 'Let\'s start off easy.',
             date: 0,
-            hour: 1,
-            minute:43
+            hour: 9,
+            minute:0
         }, {
             id: 101,
             title: '15 Squats',

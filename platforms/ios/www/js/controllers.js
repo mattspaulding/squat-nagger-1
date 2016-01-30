@@ -15,8 +15,12 @@ angular.module('starter.controllers', [])
         $state.go('tab.nag-detail', { nagId: nagId });
     }
 
-   $scope.isShow= function (dateString) {
+    $scope.isShow = function (dateString) {
         return new Date(dateString) < new Date();
+    }
+
+    $scope.chooseNagger = function () {
+        $state.go('tab.naggers');
     }
 })
 
@@ -40,48 +44,50 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('AccountCtrl', function ($scope, Nags, $ionicHistory, $state) {
+.controller('NaggersCtrl', function ($scope, Nags, $ionicHistory, $state) {
     $scope.settings = {
         enableFriends: true
     };
 
-    $scope.scheduleNagger = function (nagger) {
+    $scope.naggers = Nags.getAllNaggers();
 
-        cordova.plugins.notification.local.clearAll(function () {
-        $scope.nagger = Nags.setCurrentNaggerByName('Marin');
+    $scope.scheduleNagger = function (naggerName) {
+
+        cordova.plugins.notification.local.clearAll();
+        $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
         var notifications = [];
-            $scope.nagger.nags.forEach(function (nag, index) {
-                    var date = new Date();
-                    date.setDate(date.getDate() + nag.day);
-                    date.setHours(nag.hour);
-                    date.setMinutes(nag.minute);
-                    date.setSeconds(0);
-                    $scope.nagger.nags[index].date = date;
-                    var notification = {};
-                    notification.id = nag.id;
-                    notification.title = nag.title;
-                    notification.message = nag.message;
-                    notification.date = date;
-                    notifications.push(notification);
-               
-            });
-            $scope.nagger = Nags.setCurrentNaggerByName('Marin');
+        $scope.nagger.nags.forEach(function (nag, index) {
+            var date = new Date();
+            date.setDate(date.getDate() + nag.day);
+            date.setHours(nag.hour);
+            date.setMinutes(nag.minute);
+            date.setSeconds(0);
+            $scope.nagger.nags[index].date = date;
+            var notification = {};
+            notification.id = nag.id;
+            notification.title = nag.title;
+            notification.message = nag.message;
+            notification.date = date;
+            notifications.push(notification);
 
-            cordova.plugins.notification.local.schedule(notifications);
+        });
+        $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
 
-            cordova.plugins.notification.local.on("click", function (notification) {
-                $state.go('tab.nag-detail', { nagId: notification.id });
-            });
+        cordova.plugins.notification.local.schedule(notifications);
 
-            
+        cordova.plugins.notification.local.on("click", function (notification) {
+            $state.go('tab.nag-detail', { nagId: notification.id });
+        });
 
 
-            $ionicHistory.nextViewOptions({
-                disableBack: true
-            });
-            $state.go('tab.nag-detail', { nagId: $scope.nagger.nags[0].id });
 
-        }, this);
+
+        $ionicHistory.nextViewOptions({
+            disableBack: true
+        });
+        $state.go('tab.nag-detail', { nagId: $scope.nagger.nags[0].id });
+
+
 
     };
 });

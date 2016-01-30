@@ -1,9 +1,15 @@
 <ion-view view-title="Nags">
     <ion-content>
-        <div >{{nagger}}</div>
-     <div ng-if="nagger.nags.length==0">nags all gone</div>
+        <!--<div >{{nagger}}</div>-->
+     <div ng-if="nagger.nags.length==0">
+         <p>You are not currently being nagged.</p>
+         <p>Choose a nagger to get started.</p>
+         <button class="button button-block" ng-click="chooseNagger()">
+             Choose Nagger
+         </button>
+     </div>
         <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="nag in nagger.nags" type="item-text-wrap" ng-click="detail(nag.id)" ng-if="isShow(nag.date)">
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="nag in nagger.nags" type="item-text-wrap" ng-click="detail(nag.id)" ng-if="isShow(nag.date)" >
                 <img ng-src="{{nagger.face}}">
                 <h2>{{nag.title}}</h2>
                 <p>{{nag.message}}</p>

@@ -63,8 +63,7 @@ angular.module('starter.controllers', [])
            notifications.push(notification);
 
         });
-        var notificationSchedule = JSON.stringify(notifications);
-        cordova.plugins.notification.local.schedule(notificationSchedule);
+        cordova.plugins.notification.local.schedule(notifications);
         //$scope.nags = Nags.all();
         //var nag0 = $scope.nags[0];
         //var nag1 = $scope.nags[1];

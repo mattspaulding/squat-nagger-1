@@ -20,8 +20,8 @@ angular.module('starter.services', [])
                 message: 'Let\'s start with some squats.',
                 video: 'squats',
                 day: 0,
-                hour: 0,
-                minute: 0
+                hour: 7,
+                minute: 11
             }, {
                 title: '5 Lunges',
                 message: 'And then some lunges.',

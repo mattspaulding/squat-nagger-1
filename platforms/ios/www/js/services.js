@@ -21,14 +21,14 @@ angular.module('starter.services', [])
                 video: 'squats',
                 day: 0,
                 hour: 7,
-                minute: 17
+                minute: 20
             }, {
                 title: '5 Lunges',
                 message: 'And then some lunges.',
                 video: 'lunges',
                 day: 0,
                 hour: 16,
-                minute: 27
+                minute: 21
             }, {
                 title: '32 Squats',
                 message: 'Rise and shine sleepy head.',

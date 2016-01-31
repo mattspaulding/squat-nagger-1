@@ -15,6 +15,7 @@ angular.module('starter.controllers', [])
     $scope.nagger = Nags.getCurrentNagger();
     $scope.remove = function (nag) {
         Nags.remove(nag);
+        cordova.plugins.notification.local.clear(nag.id);
         $scope.nagger = Nags.getCurrentNagger();
     }
     $scope.detail = function (nagId) {
@@ -43,6 +44,8 @@ angular.module('starter.controllers', [])
     $scope.nag = Nags.get($stateParams.nagId);
     $scope.remove = function (nag) {
         Nags.remove(nag);
+        cordova.plugins.notification.local.clear(nag.id);
+
         $ionicHistory.nextViewOptions({
             disableBack: true
         });

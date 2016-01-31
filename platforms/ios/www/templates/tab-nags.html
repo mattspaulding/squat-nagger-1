@@ -1,5 +1,5 @@
 <ion-view view-title="Nags">
-    <ion-content>
+    <ion-content class="padding">
         <!--<div >{{nagger}}</div>-->
         <div ng-if="isShowCaughtUp()">
             <div class="list card">
@@ -15,9 +15,10 @@
                     </ion-list>
                 </div>
             </div>
-        </div>
+            <div>*Tip - swipe left on nag when done.</div>
+            </div>
         <div ng-if="nagger==null" class="list card">
-            <div class="item item-divider">My Nagger</div>
+            <div class="item item-divider">No Nags</div>
             <div class="item item-body">
                 <div>
                     <p>You are not currently being nagged.</p>

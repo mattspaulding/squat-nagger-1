@@ -62,6 +62,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
     })
       .state('tab.nag-detail', {
+          cache: false,
           url: '/nags/:nagId',
           views: {
               'tab-nags': {

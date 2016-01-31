@@ -85,8 +85,10 @@ angular.module('starter.controllers', [])
             date.setMinutes(nag.minute);
             date.setSeconds(0);
             $scope.nagger.nags[index].date = date;
+            var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) { var r = Math.random() * 16 | 0, v = c == 'x' ? r : r & 0x3 | 0x8; return v.toString(16); });
+            $scope.nagger.nags[index].id = guid;
             var notification = {};
-            notification.id = nag.id;
+            notification.id = guid;
             notification.title = nag.title;
             notification.message = nag.message;
             notification.date = date;

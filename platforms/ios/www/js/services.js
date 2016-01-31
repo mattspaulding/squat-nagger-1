@@ -233,8 +233,7 @@ angular.module('starter.services', [])
             });
             cordova.plugins.notification.local.update({
                 id:nagger.nags[0].id,
-                badge: count,
-                title: "Updated Notification"
+                badge: count
             });
         },
         get: function (nagId) {

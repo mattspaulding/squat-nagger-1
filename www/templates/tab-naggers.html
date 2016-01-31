@@ -1,14 +1,28 @@
 <ion-view view-title="Naggers">
     <ion-content>
-        <ion-list>
+        <!--<ion-list>
             <ion-toggle ng-model="settings.enableFriends">
                 Enable Butt Nagger
             </ion-toggle>
-        </ion-list>
-        <ion-list>
+        </ion-list>-->
+        <div ng-if="nagger!=null" class="list card">
+            <div class="item item-divider">{{nagger.name}} <br /> ({{nagger.level}})</div>
+            <div class="item item-body">
+                <div>
+                    <ion-list>
+                        <img ng-src="{{nagger.face}}">
+                        <button class="button button-block" ng-click="cancelNagger()">
+                            Cancel Nagger
+                        </button>
+
+                    </ion-list>
+                </div>
+            </div>
+        </div>
+        <ion-list ng-if="nagger==null">
             <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="nagger in naggers" type="item-text-wrap" ng-click="scheduleNagger(nagger.name)">
                 <img ng-src="{{nagger.face}}">
-               {{nagger.name}} <br /> ({{nagger.level}})
+                {{nagger.name}} <br /> ({{nagger.level}})
                 <i class="icon ion-chevron-right icon-accessory"></i>
             </ion-item>
         </ion-list>

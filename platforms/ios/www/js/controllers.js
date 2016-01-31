@@ -1,6 +1,15 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function ($scope) { })
+.controller('DashCtrl', function ($scope, Nags, $state) {
+    $scope.nagger = Nags.getCurrentNagger();
+    if ($scope.nagger != null) {
+        $scope.endingDate = new Date($scope.nagger.nags[$scope.nagger.nags.length - 1].date);
+    }
+
+    $scope.chooseNagger = function () {
+        $state.go('tab.naggers');
+    }
+})
 
 .controller('NagsCtrl', function ($scope, Nags, $ionicHistory, $state) {
     $scope.nagger = Nags.getCurrentNagger();
@@ -15,8 +24,12 @@ angular.module('starter.controllers', [])
         $state.go('tab.nag-detail', { nagId: nagId });
     }
 
-    $scope.isShow = function (dateString) {
+    $scope.isShowNag = function (dateString) {
         return new Date(dateString) < new Date();
+    }
+
+    $scope.isShowCaughtUp = function () {
+        return new Date($scope.nagger.nags[0].date) > new Date();
     }
 
     $scope.chooseNagger = function () {
@@ -50,6 +63,12 @@ angular.module('starter.controllers', [])
     };
 
     $scope.naggers = Nags.getAllNaggers();
+    $scope.nagger = Nags.getCurrentNagger();
+
+    $scope.cancelNagger = function () {
+        Nags.cancelCurrentNagger();
+        $scope.nagger = null;
+    };
 
     $scope.scheduleNagger = function (naggerName) {
 

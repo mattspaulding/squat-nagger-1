@@ -184,7 +184,7 @@ angular.module('starter.services', [])
         get: function (nagId) {
             var currentNagger = JSON.parse(window.localStorage.getItem("currentNagger"));
             for (var i = 0; i < currentNagger.nags.length; i++) {
-                if (currentNagger.nags[i].id ===nagId) {
+                if (currentNagger.nags[i].id === parseInt(nagId)) {
                     return currentNagger.nags[i];
                 }
             }

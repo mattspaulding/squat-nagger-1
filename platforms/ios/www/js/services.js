@@ -5,7 +5,7 @@ angular.module('starter.services', [])
 
     var naggers = [
         {
-            name: 'Sally Sloppybottom',
+            name: 'Sally Slumpbottom',
             face: 'http://www.afamilyatwar.com/Index%20Photos/Margery%20Mason.jpg',
             level: 'Easy',
             nags: [{

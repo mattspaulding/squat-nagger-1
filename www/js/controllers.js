@@ -91,6 +91,7 @@ angular.module('starter.controllers', [])
             notification.title = nag.title;
             notification.message = nag.message;
             notification.date = date;
+            notification.sound = "file://sounds/splash.mp3";
             notifications.push(notification);
 
         });

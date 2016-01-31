@@ -20,11 +20,11 @@ angular.module('starter.services', [])
                 message: 'Let\'s start with some squats.',
                 video: 'squats',
                 day: 0,
-                hour: 7,
-                minute: 45
+                hour: 0,
+                minute: 0
             }, {
                 title: '5 Lunges',
-                message: 'And then some lunges.',
+                message: 'And now some lunges.',
                 video: 'lunges',
                 day: 0,
                 hour: 7,
@@ -32,42 +32,49 @@ angular.module('starter.services', [])
             }, {
                 title: '32 Squats',
                 message: 'Rise and shine sleepy head.',
+                video: 'squats',
                 day: 1,
                 hour: 9,
                 minute: 0
             }, {
                 title: '24 Squats',
                 message: 'Morning pump.',
+                video: 'squats',
                 day: 1,
                 hour: 10,
                 minute: 26
             }, {
                 title: '10 Lunges',
                 message: 'Pump them out.',
+                video: 'lunges',
                 day: 1,
                 hour: 20,
                 minute: 30
             }, {
                 title: '20 Squats',
                 message: 'Well good morning to you.',
+                video: 'squats',
                 day: 2,
                 hour: 8,
                 minute: 26
             }, {
-                title: '15 Lunges',
+                title: '15 Curtsey Lunges',
                 message: 'One leg at a time.',
+                video: 'curtsey-lunges',
                 day: 2,
                 hour: 17,
                 minute: 15
             }, {
                 title: '45 Squats',
                 message: 'This is it for today.',
+                video: 'squats',
                 day: 1,
                 hour: 20,
                 minute: 0
             }, {
                 title: 'All done',
                 message: 'You made it. Woopty doo...',
+                video: 'victory',
                 day: 1,
                 hour: 20,
                 minute: 1
@@ -215,6 +222,18 @@ angular.module('starter.services', [])
         },
         getCurrentNagger: function () {
             return JSON.parse(window.localStorage.getItem("currentNagger"));
+        },
+        setBadgeNumber: function () {
+            var nagger= JSON.parse(window.localStorage.getItem("currentNagger"));
+            var count = 0;
+            nagger.nags.forEach(function (nag, index) {
+                if (new Date(nagger.nags[index].date) < new Date()) {
+                    count++;
+                }
+            });
+            cordova.plugins.notification.local.update({
+                badge: count
+            });
         },
         get: function (nagId) {
             var currentNagger = JSON.parse(window.localStorage.getItem("currentNagger"));

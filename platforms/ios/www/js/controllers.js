@@ -16,7 +16,8 @@ angular.module('starter.controllers', [])
     $scope.remove = function (nag) {
         Nags.remove(nag);
         cordova.plugins.notification.local.clear(nag.id);
-        $scope.nagger = Nags.getCurrentNagger();
+        Nags.setBadgeNumber();
+
     }
     $scope.detail = function (nagId) {
         $ionicHistory.nextViewOptions({
@@ -45,6 +46,7 @@ angular.module('starter.controllers', [])
     $scope.remove = function (nag) {
         Nags.remove(nag);
         cordova.plugins.notification.local.clear(nag.id);
+        Nags.setBadgeNumber();
 
         $ionicHistory.nextViewOptions({
             disableBack: true
@@ -91,8 +93,6 @@ angular.module('starter.controllers', [])
             notification.title = nag.title;
             notification.text = nag.message;
             notification.date = date;
-            notification.badge = 1;
-            notification.sound = 'file://sounds/splash.caf';
             notifications.push(notification);
         });
         $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
@@ -103,8 +103,9 @@ angular.module('starter.controllers', [])
             $state.go('tab.nag-detail', { nagId: notification.id });
         });
 
-
-
+        cordova.plugins.notification.local.on("trigger", function (notification) {
+            Nags.setBadgeNumber();
+        });
 
         $ionicHistory.nextViewOptions({
             disableBack: true

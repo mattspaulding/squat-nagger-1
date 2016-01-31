@@ -89,11 +89,11 @@ angular.module('starter.controllers', [])
             var notification = {};
             notification.id = guid;
             notification.title = nag.title;
-            notification.message = nag.message;
+            notification.text = nag.message;
             notification.date = date;
-            notification.sound = "file://sounds/splash.mp3";
+            notification.badge = 1;
+            notification.sound = 'file://sounds/splash.caf';
             notifications.push(notification);
-
         });
         $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
 

@@ -22,7 +22,7 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true" />
   </feature>
-  <plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.4" src="https://github.com/katzer/cordova-plugin-local-notifications" />
+  <plugin name="cordova.plugin.local-notification" version="0.8.4" src="https://github.com/katzer/cordova-plugin-local-notifications" />
   <platform name="android">
     <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi" />
     <icon src="resources/android/icon/drawable-mdpi-icon.png" density="mdpi" />

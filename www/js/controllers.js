@@ -74,7 +74,6 @@ angular.module('starter.controllers', [])
     };
 
     $scope.scheduleNagger = function (naggerName) {
-
         cordova.plugins.notification.local.clearAll();
         $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
         var notifications = [];

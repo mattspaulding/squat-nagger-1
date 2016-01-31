@@ -5,19 +5,22 @@
   The Friends service returns an array of friend data
 -->
 <ion-view view-title="{{nag.name}}">
-    <!--<ion-nav-buttons side="left">
+    <ion-nav-buttons side="left">
         <button class="button back-button buttons button-clear header-item" ng-click="goBack()">
             <i class="icon ion-ios-arrow-back"> Nags</i>
         </button>
-    </ion-nav-buttons>-->
+    </ion-nav-buttons>
     <ion-content class="padding">
         <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
+            <ion-item class="item-avatar" type="item-text-wrap">
                 <img ng-src="{{nagger.face}}">
                 <h2>{{nag.title}}</h2>
                 <p>{{nag.message}}</p>
             </ion-item>
-        </ion-list>
+            <div ng-if="nag.details">
+                <p>{{nag.details}}</p>
+            </div>
+    </ion-list>
         <button class="button button-block" ng-click="remove(nag)">
             Done
         </button>

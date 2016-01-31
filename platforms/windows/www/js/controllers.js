@@ -1,11 +1,22 @@
 ﻿angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function ($scope) { })
+.controller('DashCtrl', function ($scope, Nags, $state) {
+    $scope.nagger = Nags.getCurrentNagger();
+    if ($scope.nagger != null) {
+        $scope.endingDate = new Date($scope.nagger.nags[$scope.nagger.nags.length - 1].date);
+    }
+
+    $scope.chooseNagger = function () {
+        $state.go('tab.naggers');
+    }
+})
 
 .controller('NagsCtrl', function ($scope, Nags, $ionicHistory, $state) {
-    $scope.nagger = Nags.setCurrentNaggerByName('Marin');
-     $scope.remove = function (nag) {
+    $scope.nagger = Nags.getCurrentNagger();
+    $scope.remove = function (nag) {
         Nags.remove(nag);
+        cordova.plugins.notification.local.clear(nag.id);
+        $scope.nagger = Nags.getCurrentNagger();
     }
     $scope.detail = function (nagId) {
         $ionicHistory.nextViewOptions({
@@ -13,12 +24,28 @@
         });
         $state.go('tab.nag-detail', { nagId: nagId });
     }
+
+    $scope.isShowNag = function (dateString) {
+        return new Date(dateString) < new Date();
+    }
+
+    $scope.isShowCaughtUp = function () {
+        return new Date($scope.nagger.nags[0].date) > new Date();
+    }
+
+    $scope.chooseNagger = function () {
+        $state.go('tab.naggers');
+    }
 })
 
 .controller('NagDetailCtrl', function ($scope, $stateParams, Nags, $ionicHistory, $state) {
+    $ionicHistory.clearHistory();
+    $scope.nagger = Nags.getCurrentNagger();
     $scope.nag = Nags.get($stateParams.nagId);
     $scope.remove = function (nag) {
         Nags.remove(nag);
+        cordova.plugins.notification.local.clear(nag.id);
+
         $ionicHistory.nextViewOptions({
             disableBack: true
         });
@@ -33,79 +60,57 @@
 
 })
 
-.controller('AccountCtrl', function ($scope, Nags, $ionicHistory, $state) {
+.controller('NaggersCtrl', function ($scope, Nags, $ionicHistory, $state) {
     $scope.settings = {
         enableFriends: true
     };
 
-    $scope.scheduleNagger = function (nagger) {
-        debugger;
-        //cordova.plugins.notification.local.cancelAll(function () {
-            $scope.nagger = Nags.getByName(nagger);
-            foreach( nag in $scope.nagger.nags)
-            {
-                var date = new Date();
-                date.setDate(date.getDate() + nag.date);
-                date.setHours(nag.hour);
-                date.setMinutes(nag.minute);
-                //date.setMinutes(date.getMinutes() + 1);
+    $scope.naggers = Nags.getAllNaggers();
+    $scope.nagger = Nags.getCurrentNagger();
 
-                cordova.plugins.notification.local.schedule({
-                    id: nag.id,
-                    title:  nag.title,
-                    message: nag.message,
-                    at: date
-                });
+    $scope.cancelNagger = function () {
+        Nags.cancelCurrentNagger();
+        $scope.nagger = null;
+    };
 
-            }
-            //$scope.nags = Nags.all();
-            //var nag0 = $scope.nags[0];
-            //var nag1 = $scope.nags[1];
-            //var nag2 = $scope.nags[2];
-            //var nag3 = $scope.nags[3];
-            //// var sound = device.platform == 'Android' ? 'file://sound.mp3' : 'file://beep.caf';
-            //var date = new Date();
-            //var date1 = new Date();
-            //date1.setMinutes(date.getMinutes() + 1);
-            //var date2 = new Date();
-            //date2.setMinutes(date.getMinutes() + 2);
-            //var date3 = new Date();
-            //date3.setMinutes(date.getMinutes() + 3);
-            //cordova.plugins.notification.local.schedule([{
-            //    id: nag1.id,
-            //    title: 'notif1',// nag1.name,
-            //    message: nag1.lastText,
-            //    at: date1
-            //}, {
-            //    id: nag2.id,
-            //    title: 'notif2',// nag1.name,
-            //    message: nag2.lastText,
-            //    at: date2,
-            //    sound: 'file://beep.caf',
-            //    icon: "https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png",
-            //    data: { nagId: nag2.id }
-            //}, {
-            //    id: nag3.id,
-            //    title: 'notif3',// nag1.name,
-            //    message: nag3.lastText,
-            //    at: date3,
-            //    sound: 'file://beep.caf',
-            //    icon: "https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png",
-            //    data: { nagId: nag3.id }
-            //}]);
+    $scope.scheduleNagger = function (naggerName) {
 
-            $ionicHistory.nextViewOptions({
-                disableBack: true
-            });
-            $state.go('tab.nag-detail', { nagId: nag0.id });
+        cordova.plugins.notification.local.clearAll();
+        $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
+        var notifications = [];
+        $scope.nagger.nags.forEach(function (nag, index) {
+            var date = new Date();
+            date.setDate(date.getDate() + nag.day);
+            date.setHours(nag.hour);
+            date.setMinutes(nag.minute);
+            date.setSeconds(0);
+            $scope.nagger.nags[index].date = date;
+            var guid = Math.floor((Math.random() * 999999999999999) + 1);
+            $scope.nagger.nags[index].id = guid;
+            var notification = {};
+            notification.id = guid;
+            notification.title = nag.title;
+            notification.message = nag.message;
+            notification.date = date;
+            notifications.push(notification);
 
-        //}, this);
+        });
+        $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
 
-
+        cordova.plugins.notification.local.schedule(notifications);
 
         cordova.plugins.notification.local.on("click", function (notification) {
             $state.go('tab.nag-detail', { nagId: notification.id });
         });
+
+
+
+
+        $ionicHistory.nextViewOptions({
+            disableBack: true
+        });
+        $state.go('tab.nag-detail', { nagId: $scope.nagger.nags[0].id });
+
 
 
     };

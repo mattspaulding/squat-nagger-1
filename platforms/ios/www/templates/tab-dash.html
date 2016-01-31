@@ -1,18 +1,23 @@
 <ion-view view-title="Butt Nagger">
-    <ion-content class="padding">
-        <div class="list card">
-            <div class="item item-divider">My Nagger</div>
-            <div class="item item-body">
-                <div ng-if="nagger==null">
-                    <p>You are not currently being nagged.</p>
-                    <p>Choose a nagger to get started.</p>
-                    <button class="button button-block" ng-click="chooseNagger()">
-                        Choose Nagger
-                    </button>
-                </div>
-                <div ng-if="nagger!=null">
+    <ion-content>
+        <div ng-if="nagger!=null">
+            <div class="list card">
+                <div class="item item-divider">My Host</div>
+                <div class="item item-body">
                     <ion-list>
-                        <ion-item class="item-avatar" type="item-text-wrap">
+                        <ion-item class="item-thumbnail-left" type="item-text-wrap">
+                            <img ng-src="https://cdnil0.fiverrcdn.com/photos/2170980/original/DSC_6769.jpg?1448408453">
+                            Keep it up. <br /> You're doing great!
+                        </ion-item>
+                        <p>In your session with {{nagger.name}} there are <b>{{nagger.nags.length}}</b> nags remaining and will end on {{endingDate.toDateString()}}</p>
+                    </ion-list>
+                </div>
+            </div>
+            <div class="list card">
+                <div class="item item-divider">My Nagger</div>
+                <div class="item item-body">
+                    <ion-list>
+                        <ion-item class="item-thumbnail-left" type="item-text-wrap">
                             <img ng-src="{{nagger.face}}">
                             {{nagger.name}} <br /> ({{nagger.level}})
                         </ion-item>
@@ -20,14 +25,22 @@
                 </div>
             </div>
         </div>
-        <div class="list card">
-            <div class="item item-divider">My Nags</div>
-            <div class="item item-body">
-                <div ng-if="nagger==null">
-                  Nothing to see here.
-                </div>
-                <div ng-if="nagger!=null">
-                    There are <b>{{nagger.nags.length}}</b> nags remaining, ending on {{endingDate.toDateString()}}
+        <div ng-if="nagger==null">
+            <div class="list card">
+                <div class="item item-divider">Welcome to Butt Nagger</div>
+                <div class="item item-body">
+                    <ion-list>
+                        <ion-item class="item-thumbnail-left" type="item-text-wrap">
+                            <img ng-src="https://cdnil0.fiverrcdn.com/photos/2170980/original/DSC_6769.jpg?1448408453">
+                            Hi there. I'm Marin. <br /> And I will be your host.
+                        </ion-item>
+                        <p>Butt Nagger will get your butt in shape.</p>
+                        <p>Choose a nagger to get started.</p>
+                        <button class="button button-block" ng-click="chooseNagger()">
+                            Choose Nagger
+                        </button>
+
+                    </ion-list>
                 </div>
             </div>
         </div>

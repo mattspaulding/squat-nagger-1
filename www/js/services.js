@@ -6,78 +6,71 @@ angular.module('starter.services', [])
     var naggers = [
         {
             name: 'Sally Sloppybottom',
-            face: 'https://cdnil0.fiverrcdn.com/photos/2170980/original/DSC_6769.jpg?1448408453',
+            face: 'http://www.afamilyatwar.com/Index%20Photos/Margery%20Mason.jpg',
             level: 'Easy',
             nags: [{
-                id: 100,
                 title: 'Hello, I\'m Sally',
                 message: 'If I can do it, you can too.',
+                details: 'We are going to start off easy today. Then we will pick up the pace first thing tomorrow morning. Click the \'Done\' button to get started.',
                 day: 0,
                 hour: 0,
                 minute: 0
             }, {
-                id: 101,
                 title: '15 Squats',
-                message: 'Let\'s do some squats.',
+                message: 'Let\'s start with some squats.',
+                video: 'squats',
                 day: 0,
-                hour: 10,
-                minute: 26
+                hour: 0,
+                minute: 0
             }, {
-                id: 102,
-                title: '20 Squats',
-                message: 'OK. Now some more.',
+                title: '5 Lunges',
+                message: 'And then some lunges.',
+                video: 'lunges',
                 day: 0,
                 hour: 16,
                 minute: 27
             }, {
-                id: 103,
                 title: '32 Squats',
                 message: 'Rise and shine sleepy head.',
                 day: 1,
                 hour: 9,
                 minute: 0
             }, {
-                id: 104,
                 title: '24 Squats',
                 message: 'Morning pump.',
                 day: 1,
                 hour: 10,
                 minute: 26
             }, {
-                id: 105,
                 title: '10 Lunges',
                 message: 'Pump them out.',
                 day: 1,
-                hour: 12,
+                hour: 20,
                 minute: 30
             }, {
-                id: 106,
                 title: '20 Squats',
-                message: 'Just a few more.',
-                day: 1,
-                hour: 15,
+                message: 'Well good morning to you.',
+                day: 2,
+                hour: 8,
                 minute: 26
             }, {
-                id: 107,
                 title: '15 Lunges',
                 message: 'One leg at a time.',
-                day: 1,
+                day: 2,
                 hour: 17,
                 minute: 15
             }, {
-                id: 108,
                 title: '45 Squats',
                 message: 'This is it for today.',
                 day: 1,
                 hour: 20,
                 minute: 0
             }, {
-                id: 109,
                 title: 'All done',
                 message: 'You made it. Woopty doo...',
                 day: 1,
                 hour: 20,
-                minute: 0
+                minute: 1
             }]
         },
         {
@@ -85,21 +78,18 @@ angular.module('starter.services', [])
             face: 'https://cdnil1.fiverrcdn.com/photos/2795414/original/1590.jpg?1393353812',
             level: 'Moderate',
             nags: [{
-                id: 100,
                 title: 'Hello',
                 message: 'Welcome to Butt Nagger!',
                 day: 0,
                 hour: 0,
                 minute: 0
             }, {
-                id: 101,
                 title: '15 Squats',
                 message: 'Let\'s do some squats.',
                 day: 0,
                 hour: 16,
                 minute: 26
             }, {
-                id: 102,
                 title: '20 Squats',
                 message: 'Let\'s burn it.',
                 day: 0,
@@ -107,26 +97,71 @@ angular.module('starter.services', [])
                 minute: 27
             }]
         },
+       {
+           name: 'Maddie Motheroftwo',
+           face: 'http://images.agoramedia.com/wte3.0/gcms/just-for-mom-article.jpg',
+           level: 'Moderate',
+           nags: [{
+               title: 'Hello',
+               message: 'Welcome to Butt Nagger!',
+               day: 0,
+               hour: 0,
+               minute: 0
+           }, {
+               title: '15 Squats',
+               message: 'Let\'s do some squats.',
+               day: 0,
+               hour: 16,
+               minute: 26
+           }, {
+               title: '20 Squats',
+               message: 'Let\'s burn it.',
+               day: 0,
+               hour: 16,
+               minute: 27
+           }]
+       },
+       {
+           name: 'Lily Likewhatever',
+           face: 'http://i5.walmartimages.com/dfw/dce07b8c-26ed/k2-_37fcad99-ab2f-4f3a-9001-5f463f78a69a.v2.jpg',
+           level: 'Hard',
+           nags: [{
+               title: 'Hello',
+               message: 'Welcome to Butt Nagger!',
+               day: 0,
+               hour: 0,
+               minute: 0
+           }, {
+               title: '15 Squats',
+               message: 'Let\'s do some squats.',
+               day: 0,
+               hour: 16,
+               minute: 26
+           }, {
+               title: '20 Squats',
+               message: 'Let\'s burn it.',
+               day: 0,
+               hour: 16,
+               minute: 27
+           }]
+       },
         {
             name: 'Bobbi & Bonnie Bunz',
             face: 'https://cdnil1.fiverrcdn.com/photos/2044703/original/image.jpg?1449095649',
             level: 'Advanced',
             nags: [{
-                id: 100,
                 title: 'Hello',
                 message: 'Welcome to Butt Nagger!',
                 day: 0,
                 hour: 0,
                 minute: 0
             }, {
-                id: 101,
                 title: '15 Squats',
                 message: 'Let\'s do some squats.',
                 day: 0,
                 hour: 16,
                 minute: 26
             }, {
-                id: 102,
                 title: '20 Squats',
                 message: 'Let\'s burn it.',
                 day: 0,

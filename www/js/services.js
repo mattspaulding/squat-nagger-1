@@ -21,7 +21,7 @@ angular.module('starter.services', [])
                 video: 'squats',
                 day: 0,
                 hour: 7,
-                minute: 11
+                minute: 14
             }, {
                 title: '5 Lunges',
                 message: 'And then some lunges.',

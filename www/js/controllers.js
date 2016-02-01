@@ -79,7 +79,9 @@ angular.module('starter.controllers', [])
     $scope.showConfirm = function () {
         var confirmPopup = $ionicPopup.confirm({
             title: 'Cancel Nagger',
-            template: 'Are you sure you want to cancel this Nagger?'
+            template: 'Are you sure you want to cancel this Nagger?',
+            cancelText: 'No',
+            okText: 'Yes'
         });
 
         confirmPopup.then(function (res) {

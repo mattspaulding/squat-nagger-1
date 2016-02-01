@@ -86,7 +86,7 @@ angular.module('starter.services', [])
             level: 'Moderate',
             nags: [{
                 title: 'Hello',
-                message: 'Welcome to Butt Nagger!',
+                message: 'Welcome to Squat Nagger!',
                 day: 0,
                 hour: 0,
                 minute: 0
@@ -110,7 +110,7 @@ angular.module('starter.services', [])
            level: 'Moderate',
            nags: [{
                title: 'Hello',
-               message: 'Welcome to Butt Nagger!',
+               message: 'Welcome to Squat Nagger!',
                day: 0,
                hour: 0,
                minute: 0
@@ -134,7 +134,7 @@ angular.module('starter.services', [])
            level: 'Hard',
            nags: [{
                title: 'Hello',
-               message: 'Welcome to Butt Nagger!',
+               message: 'Welcome to Squat Nagger!',
                day: 0,
                hour: 0,
                minute: 0
@@ -158,7 +158,7 @@ angular.module('starter.services', [])
             level: 'Advanced',
             nags: [{
                 title: 'Hello',
-                message: 'Welcome to Butt Nagger!',
+                message: 'Welcome to Squat Nagger!',
                 day: 0,
                 hour: 0,
                 minute: 0

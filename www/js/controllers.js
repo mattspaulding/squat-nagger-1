@@ -119,9 +119,13 @@ angular.module('starter.controllers', [])
             });
             $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
             cordova.plugins.notification.local.schedule(notifications);
-            cordova.plugins.notification.local.getTriggeredIds(function (ids) {
+
+            cordova.plugins.notification.local.on("schedule", function (notification) {
+               
+             cordova.plugins.notification.local.getTriggeredIds(function (ids) {
                 alert(ids.length);
             }, cordova.plugins);
+            });
 
             cordova.plugins.notification.local.on("click", function (notification) {
                 $state.go('tab.nag-detail', { nagId: notification.id });

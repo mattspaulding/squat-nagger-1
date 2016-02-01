@@ -20,15 +20,15 @@ angular.module('starter.services', [])
                 message: 'Let\'s start with some squats.',
                 video: 'squats',
                 day: 0,
-                hour: 0,
-                minute: 0
+                hour: 19,
+                minute: 39
             }, {
                 title: '5 Lunges',
                 message: 'And now some lunges.',
                 video: 'lunges',
                 day: 0,
-                hour: 7,
-                minute: 46
+                hour: 19,
+                minute: 40
             }, {
                 title: '32 Squats',
                 message: 'Rise and shine sleepy head.',

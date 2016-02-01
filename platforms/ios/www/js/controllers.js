@@ -72,6 +72,7 @@ angular.module('starter.controllers', [])
 
     $scope.cancelNagger = function () {
         Nags.cancelCurrentNagger();
+        Nags.setBadgeNumber();
         $scope.nagger = null;
     };
 
@@ -93,6 +94,8 @@ angular.module('starter.controllers', [])
             notification.title = nag.title;
             notification.text = nag.message;
             notification.date = date;
+            notification.sound= 'file://sounds/cork_pop_x.wav',
+   
             notifications.push(notification);
         });
         $scope.nagger = Nags.setCurrentNaggerByName(naggerName);

@@ -14,7 +14,7 @@ angular.module('starter.controllers', [])
 .controller('NagsCtrl', function ($scope, Nags, $ionicHistory, $state) {
     $scope.nagger = Nags.getCurrentNagger();
     $scope.remove = function (nag) {
-        Nags.remove(nag);
+        HNags.remove(nag);
         cordova.plugins.notification.local.clear(nag.id);
         Nags.setBadgeNumber();
         $scope.nagger = Nags.getCurrentNagger();
@@ -61,7 +61,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('NaggersCtrl', function ($scope, Nags, $ionicHistory, $state) {
+.controller('NaggersCtrl', function ($scope, Nags, $ionicHistory, $state,$ionicPopup) {
     $scope.settings = {
         enableFriends: true
     };
@@ -73,6 +73,22 @@ angular.module('starter.controllers', [])
         Nags.clearBadgeNumber();
         Nags.cancelCurrentNagger();
         $scope.nagger = null;
+    };
+
+    // A confirm dialog
+    $scope.showConfirm = function () {
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Cancel Nagger',
+            template: 'Are you sure you want to cancel this Nagger?'
+        });
+
+        confirmPopup.then(function (res) {
+            if (res) {
+                $scope.cancelNagger();
+            } else {
+               //do nothing
+            }
+        });
     };
 
     $scope.scheduleNagger = function (naggerName) {

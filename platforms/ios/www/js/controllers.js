@@ -61,7 +61,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('NaggersCtrl', function ($scope, Nags, $ionicHistory, $state,$ionicPopup) {
+.controller('NaggersCtrl', function ($scope, Nags, $ionicHistory, $state, $ionicPopup) {
     $scope.settings = {
         enableFriends: true
     };
@@ -88,57 +88,53 @@ angular.module('starter.controllers', [])
             if (res) {
                 $scope.cancelNagger();
             } else {
-               //do nothing
+                //do nothing
             }
         });
     };
 
     $scope.scheduleNagger = function (naggerName) {
-        cordova.plugins.notification.local.getIds(function (ids) {
-            alert(ids);
-        }, cordova.plugins);
-        cordova.plugins.notification.local.cancelAll();
-        cordova.plugins.notification.local.getIds(function (ids) {
-            alert(ids);
-        }, cordova.plugins);
-        $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
-        var notifications = [];
-        $scope.nagger.nags.forEach(function (nag, index) {
-            var date = new Date();
-            date.setDate(date.getDate() + nag.day);
-            date.setHours(nag.hour);
-            date.setMinutes(nag.minute);
-            date.setSeconds(0);
-            $scope.nagger.nags[index].date = date;
-            var guid = Math.floor((Math.random() * 999999999999999) + 1);
-            $scope.nagger.nags[index].id = guid;
-            var notification = {};
-            notification.id = guid;
-            notification.title = nag.title;
-            notification.text = nag.message;
-            notification.date = date;
-            notification.sound= 'file://sounds/cork-pop.wav',
-   
-            notifications.push(notification);
-        });
-        $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
 
-        cordova.plugins.notification.local.schedule(notifications);
+        cordova.plugins.notification.local.cancelAll(function () {
 
-        cordova.plugins.notification.local.on("click", function (notification) {
-            $state.go('tab.nag-detail', { nagId: notification.id });
-        });
+            $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
+            var notifications = [];
+            $scope.nagger.nags.forEach(function (nag, index) {
+                var date = new Date();
+                date.setDate(date.getDate() + nag.day);
+                date.setHours(nag.hour);
+                date.setMinutes(nag.minute);
+                date.setSeconds(0);
+                $scope.nagger.nags[index].date = date;
+                var guid = Math.floor((Math.random() * 999999999999999) + 1);
+                $scope.nagger.nags[index].id = guid;
+                var notification = {};
+                notification.id = guid;
+                notification.title = nag.title;
+                notification.text = nag.message;
+                notification.date = date;
+                notification.sound = 'file://sounds/cork-pop.wav',
 
-        cordova.plugins.notification.local.on("trigger", function (notification) {
-            Nags.setBadgeNumber();
-        });
+                notifications.push(notification);
+            });
+            $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
 
-        $ionicHistory.nextViewOptions({
-            disableBack: true
-        });
-        $state.go('tab.nag-detail', { nagId: $scope.nagger.nags[0].id });
+            cordova.plugins.notification.local.schedule(notifications);
 
+            cordova.plugins.notification.local.on("click", function (notification) {
+                $state.go('tab.nag-detail', { nagId: notification.id });
+            });
 
+            cordova.plugins.notification.local.on("trigger", function (notification) {
+                Nags.setBadgeNumber();
+            });
+
+            $ionicHistory.nextViewOptions({
+                disableBack: true
+            });
+            $state.go('tab.nag-detail', { nagId: $scope.nagger.nags[0].id });
+
+        }, this);
 
     };
 });

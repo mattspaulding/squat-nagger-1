@@ -226,11 +226,13 @@ angular.module('starter.services', [])
         setBadgeNumber: function () {
             var nagger= JSON.parse(window.localStorage.getItem("currentNagger"));
             var count = 0;
-            nagger.nags.forEach(function (nag, index) {
-                if (new Date(nagger.nags[index].date) < new Date()) {
-                    count++;
-                }
-            });
+            if (nagger != null) {
+                nagger.nags.forEach(function (nag, index) {
+                    if (new Date(nagger.nags[index].date) < new Date()) {
+                        count++;
+                    }
+                });
+            }
             cordova.plugins.notification.local.update({
                 id:nagger.nags[0].id,
                 badge: count

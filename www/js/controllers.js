@@ -94,7 +94,7 @@ angular.module('starter.controllers', [])
             notification.title = nag.title;
             notification.text = nag.message;
             notification.date = date;
-            notification.sound= 'file://sounds/whistle-at-girl.wav',
+            notification.sound= 'file://sounds/cork-pop.wav',
    
             notifications.push(notification);
         });

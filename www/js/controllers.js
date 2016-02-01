@@ -17,7 +17,7 @@ angular.module('starter.controllers', [])
         Nags.remove(nag);
         cordova.plugins.notification.local.clear(nag.id);
         Nags.setBadgeNumber();
-
+        $scope.nagger = Nags.getCurrentNagger();
     }
     $scope.detail = function (nagId) {
         $ionicHistory.nextViewOptions({
@@ -46,7 +46,7 @@ angular.module('starter.controllers', [])
     $scope.remove = function (nag) {
         Nags.remove(nag);
         cordova.plugins.notification.local.clear(nag.id);
-  
+        Nags.setBadgeNumber();
         $ionicHistory.nextViewOptions({
             disableBack: true
         });
@@ -70,8 +70,8 @@ angular.module('starter.controllers', [])
     $scope.nagger = Nags.getCurrentNagger();
 
     $scope.cancelNagger = function () {
+        Nags.clearBadgeNumber();
         Nags.cancelCurrentNagger();
-        Nags.setBadgeNumber();
         $scope.nagger = null;
     };
 

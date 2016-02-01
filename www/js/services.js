@@ -224,8 +224,16 @@ angular.module('starter.services', [])
         getCurrentNagger: function () {
             return JSON.parse(window.localStorage.getItem("currentNagger"));
         },
+        clearBadgeNumber: function () {
+            var nagger = JSON.parse(window.localStorage.getItem("currentNagger"));
+           
+            cordova.plugins.notification.local.update({
+                id: nagger.nags[0].id,
+                badge: 0
+            });
+        },
         setBadgeNumber: function () {
-            var nagger= JSON.parse(window.localStorage.getItem("currentNagger"));
+            var nagger = JSON.parse(window.localStorage.getItem("currentNagger"));
             var count = 0;
             if (nagger != null) {
                 nagger.nags.forEach(function (nag, index) {
@@ -235,7 +243,7 @@ angular.module('starter.services', [])
                 });
             }
             cordova.plugins.notification.local.update({
-                id:nagger.nags[0].id,
+                id: nagger.nags[0].id,
                 badge: count
             });
         },

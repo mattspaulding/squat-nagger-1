@@ -14,7 +14,7 @@ angular.module('starter.controllers', [])
 .controller('NagsCtrl', function ($scope, Nags, $ionicHistory, $state) {
     $scope.nagger = Nags.getCurrentNagger();
     $scope.remove = function (nag) {
-        HNags.remove(nag);
+        Nags.remove(nag);
         cordova.plugins.notification.local.clear(nag.id);
         Nags.setBadgeNumber();
         $scope.nagger = Nags.getCurrentNagger();
@@ -94,7 +94,13 @@ angular.module('starter.controllers', [])
     };
 
     $scope.scheduleNagger = function (naggerName) {
+        cordova.plugins.notification.local.getIds(function (ids) {
+            alert(ids);
+        }, cordova.plugins);
         cordova.plugins.notification.local.cancelAll();
+        cordova.plugins.notification.local.getIds(function (ids) {
+            alert(ids);
+        }, cordova.plugins);
         $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
         var notifications = [];
         $scope.nagger.nags.forEach(function (nag, index) {

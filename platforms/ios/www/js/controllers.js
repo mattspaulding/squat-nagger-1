@@ -46,8 +46,7 @@ angular.module('starter.controllers', [])
     $scope.remove = function (nag) {
         Nags.remove(nag);
         cordova.plugins.notification.local.clear(nag.id);
-        Nags.setBadgeNumber();
-
+  
         $ionicHistory.nextViewOptions({
             disableBack: true
         });

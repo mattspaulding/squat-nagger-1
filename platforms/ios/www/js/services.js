@@ -210,6 +210,7 @@ angular.module('starter.services', [])
         },
         cancelCurrentNagger: function () {
             window.localStorage.setItem("currentNagger", null);
+            cordova.plugins.notification.local.clearAll();
         },
         setCurrentNaggerByName: function (name) {
             for (var i = 0; i < naggers.length; i++) {

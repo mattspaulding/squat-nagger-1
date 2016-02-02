@@ -8,10 +8,16 @@ angular.module('starter.services', [])
             name: 'Sally Slumpbottom',
             face: 'http://www.afamilyatwar.com/Index%20Photos/Margery%20Mason.jpg',
             level: 'Easy',
+            caughtUpMessage0: 'Take a break.',
+            caughtUpMessage1: 'I will nag you in a bit.',
+            caughtUpMessage2: 'I have to change the litter box anyway.',
+            getToWorkMessage0: 'Get to work.',
+            getToWorkMessage1: 'Or don\'t.',
+            getToWorkMessage2: 'Whatever.',
             nags: [{
-                title: 'Hello, I\'m Sally',
-                message: 'If I can do it, you can too.',
-                details: 'We are going to start off easy today. Then we will pick up the pace first thing tomorrow morning. Click the \'Done\' button to get started.',
+                title: 'Ho hum, I\'m Sally',
+                message: 'They told me I am your nagger.',
+                details: 'I really don\'t want to be doing this right now. And anyway I need to feed my cats. It is a long process. Let\'s just start off with a quick exercise then we\'ll pick back up tomorrow morning. Mmmk?',
                 day: 0,
                 hour: 0,
                 minute: 0
@@ -20,15 +26,8 @@ angular.module('starter.services', [])
                 message: 'Let\'s start with some squats.',
                 video: 'squats',
                 day: 0,
-                hour: 19,
-                minute: 52
-            }, {
-                title: '5 Lunges',
-                message: 'And now some lunges.',
-                video: 'lunges',
-                day: 0,
-                hour: 19,
-                minute: 53
+                hour: 0,
+                minute: 0
             }, {
                 title: '32 Squats',
                 message: 'Rise and shine sleepy head.',
@@ -210,7 +209,7 @@ angular.module('starter.services', [])
         },
         cancelCurrentNagger: function () {
             window.localStorage.setItem("currentNagger", null);
-           // cordova.plugins.notification.local.cancelAll();
+            cordova.plugins.notification.local.cancelAll();
         },
         setCurrentNaggerByName: function (name) {
             for (var i = 0; i < naggers.length; i++) {
@@ -226,7 +225,7 @@ angular.module('starter.services', [])
         },
         clearBadgeNumber: function () {
             var nagger = JSON.parse(window.localStorage.getItem("currentNagger"));
-           
+
             cordova.plugins.notification.local.update({
                 id: nagger.nags[0].id,
                 badge: 0

@@ -125,7 +125,7 @@ angular.module('starter.controllers', ["ionic", "ngCordova"])
             });
             $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
             $cordovaLocalNotification.schedule(notifications).then(function(result){
-                var r = result;
+               alert(result);
                 $cordovaLocalNotification.clearAll();
             });
             //cordova.plugins.notification.local.schedule(notifications);

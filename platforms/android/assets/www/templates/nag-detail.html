@@ -1,0 +1,55 @@
+<ion-view view-title="{{nag.name}}">
+    <ion-nav-buttons side="left">
+        <button class="button back-button buttons button-clear header-item" ng-click="goBack()">
+            <i class="icon ion-ios-arrow-back"> Nags</i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <ion-list>
+            <ion-item class="item-avatar" type="item-text-wrap">
+                <img ng-src="{{nagger.face}}">
+                <h2>{{nag.title}}</h2>
+                <p>{{nag.message}}</p>
+            </ion-item>
+            <ion-item ng-if="nag.details" class="item-text-wrap">
+                    <p>{{nag.details}}</p>
+            </ion-item>
+            <div class="card" ng-show="nag.video=='squats'">
+                <ion-item class="item-avatar" type="item-text-wrap">
+                    <img ng-src="https://cdnil0.fiverrcdn.com/photos/2170980/original/DSC_6769.jpg?1448408453">
+                    How to do squats. <br /> Watch the video.
+                </ion-item>
+                <ion-item>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/ZYVLga3qxpU" frameborder="0" width="560" height="315"></iframe>
+                    </div>
+                </ion-item>
+            </div>
+            <div class="card" ng-show="nag.video=='lunges'">
+                <ion-item class="item-avatar" type="item-text-wrap">
+                    <img ng-src="https://cdnil0.fiverrcdn.com/photos/2170980/original/DSC_6769.jpg?1448408453">
+                    How to do lunges. <br /> Watch the video.
+                </ion-item>
+                <ion-item>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/gmm__HeeOZI" frameborder="0" width="560" height="315"></iframe>
+                    </div>
+                </ion-item>
+            </div>
+            <div class="card" ng-show="nag.video=='curtsey-lunges'">
+                <ion-item class="item-avatar" type="item-text-wrap">
+                    <img ng-src="https://cdnil0.fiverrcdn.com/photos/2170980/original/DSC_6769.jpg?1448408453">
+                    How to do curtsey lunges. <br /> Watch the video.
+                </ion-item>
+                <ion-item>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/fntpkvd2IAI" frameborder="0" width="560" height="315"></iframe>
+                    </div>
+                </ion-item>
+            </div>
+     <button class="button button-block button-positive" ng-click="remove(nag)">
+                Done
+            </button>
+        </ion-list>
+    </ion-content>
+</ion-view>

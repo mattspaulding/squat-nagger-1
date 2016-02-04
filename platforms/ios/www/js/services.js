@@ -1,6 +1,6 @@
-angular.module('starter.services', [])
+angular.module('starter.services',["ionic", "ngCordova"])
 
-.factory('Nags', function () {
+.factory('Nags', function ( $cordovaLocalNotification) {
     // Might use a resource here that returns a JSON array
 
     var naggers = [
@@ -195,7 +195,10 @@ angular.module('starter.services', [])
         },
         cancelCurrentNagger: function () {
             window.localStorage.setItem("currentNagger", null);
-            cordova.plugins.notification.local.cancelAll();
+            $cordovaLocalNotification.cancelAll().then(function (result) {
+                // ...
+            });
+            //cordova.plugins.notification.local.cancelAll();
         },
         setCurrentNaggerByName: function (name) {
             for (var i = 0; i < naggers.length; i++) {
@@ -211,11 +214,16 @@ angular.module('starter.services', [])
         },
         clearBadgeNumber: function () {
             var nagger = JSON.parse(window.localStorage.getItem("currentNagger"));
-
-            cordova.plugins.notification.local.update({
+            $cordovaLocalNotification.update({
                 id: nagger.nags[0].id,
                 badge: 0
+            }).then(function (result) {
+                // ...
             });
+            //cordova.plugins.notification.local.update({
+            //    id: nagger.nags[0].id,
+            //    badge: 0
+            //});
         },
         setBadgeNumber: function () {
             var nagger = JSON.parse(window.localStorage.getItem("currentNagger"));
@@ -227,10 +235,16 @@ angular.module('starter.services', [])
                     }
                 });
             }
-            cordova.plugins.notification.local.update({
+            $cordovaLocalNotification.update({
                 id: nagger.nags[0].id,
                 badge: count
+            }).then(function (result) {
+                // ...
             });
+            //cordova.plugins.notification.local.update({
+            //    id: nagger.nags[0].id,
+            //    badge: count
+            //});
         },
         get: function (nagId) {
             var currentNagger = JSON.parse(window.localStorage.getItem("currentNagger"));

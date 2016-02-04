@@ -79,15 +79,6 @@ module.exports = [
 ];
 module.exports.metadata = 
 // TOP OF METADATA
-{
-    "cordova-plugin-app-event": "1.1.0",
-    "cordova-plugin-console": "1.0.2",
-    "cordova-plugin-device": "1.1.1",
-    "cordova-plugin-splashscreen": "3.1.0",
-    "cordova-plugin-statusbar": "2.1.0",
-    "cordova-plugin-whitelist": "1.2.1",
-    "de.appplant.cordova.plugin.local-notification": "0.8.4",
-    "ionic-plugin-keyboard": "1.0.8"
-}
+{}
 // BOTTOM OF METADATA
 });

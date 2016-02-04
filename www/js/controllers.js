@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ["ionic", "ngCordova"])
 
 .controller('DashCtrl', function ($scope, Nags, $state) {
     $scope.nagger = Nags.getCurrentNagger();
@@ -11,11 +11,14 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('NagsCtrl', function ($scope, Nags, $ionicHistory, $state) {
+.controller('NagsCtrl', function ($scope, Nags, $ionicHistory, $state, $cordovaLocalNotification) {
     $scope.nagger = Nags.getCurrentNagger();
     $scope.remove = function (nag) {
         Nags.remove(nag);
-        cordova.plugins.notification.local.clear(nag.id);
+        $cordovaLocalNotification.clear(nag.id).then(function (result) {
+            // ...
+        });
+       // cordova.plugins.notification.local.clear(nag.id);
         Nags.setBadgeNumber();
         $scope.nagger = Nags.getCurrentNagger();
     }
@@ -39,13 +42,16 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('NagDetailCtrl', function ($scope, $stateParams, Nags, $ionicHistory, $state) {
+.controller('NagDetailCtrl', function ($scope, $stateParams, Nags, $ionicHistory, $state, $cordovaLocalNotification) {
     $ionicHistory.clearHistory();
     $scope.nagger = Nags.getCurrentNagger();
     $scope.nag = Nags.get($stateParams.nagId);
     $scope.remove = function (nag) {
         Nags.remove(nag);
-        cordova.plugins.notification.local.clear(nag.id);
+        $cordovaLocalNotification.clear(nag.id).then(function (result) {
+            // ...
+        });
+        //cordova.plugins.notification.local.clear(nag.id);
         Nags.setBadgeNumber();
         $ionicHistory.nextViewOptions({
             disableBack: true
@@ -61,7 +67,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('NaggersCtrl', function ($scope, Nags, $ionicHistory, $state, $ionicPopup) {
+.controller('NaggersCtrl', function ($scope, Nags, $ionicHistory, $state, $ionicPopup, $cordovaLocalNotification) {
     $scope.settings = {
         enableFriends: true
     };
@@ -94,9 +100,8 @@ angular.module('starter.controllers', [])
     };
 
     $scope.scheduleNagger = function (naggerName) {
-
-        cordova.plugins.notification.local.cancelAll(function () {
-
+        //window.plugin.notification.local.cancelAll(function () {
+        $cordovaLocalNotification.cancelAll().then(function (result) {
             $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
             var notifications = [];
             $scope.nagger.nags.forEach(function (nag, index) {
@@ -118,23 +123,31 @@ angular.module('starter.controllers', [])
                 notifications.push(notification);
             });
             $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
-            cordova.plugins.notification.local.schedule(notifications);
+            //cordova.plugins.notification.local.schedule(notifications);
+            $cordovaLocalNotification.schedule(notifications);
 
-         
             $state.go('tab.nag-detail', { nagId: $scope.nagger.nags[0].id });
 
         }, this);
 
-        cordova.plugins.notification.local.on("click", function (notification) {
+        $rootScope.$on('$cordovaLocalNotification:click', function (event, notification, state) {
             $state.go('tab.nag-detail', { nagId: notification.id });
         });
+        //cordova.plugins.notification.local.on("click", function (notification) {
+        //    $state.go('tab.nag-detail', { nagId: notification.id });
+        //});
 
-        cordova.plugins.notification.local.on("trigger", function (notification) {
+        $rootScope.$on('$cordovaLocalNotification:trigger', function (event, notification, state) {
             Nags.setBadgeNumber();
         });
+        //cordova.plugins.notification.local.on("trigger", function (notification) {
+        //    Nags.setBadgeNumber();
+        //});
 
         $ionicHistory.nextViewOptions({
             disableBack: true
         });
+
+
     };
 });

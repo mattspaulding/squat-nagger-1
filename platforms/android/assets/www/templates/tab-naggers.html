@@ -1,0 +1,41 @@
+<ion-view view-title="Naggers">
+    <ion-content>
+        <!--<ion-list>
+            <ion-toggle ng-model="settings.enableFriends">
+                Enable Squat Nagger
+            </ion-toggle>
+        </ion-list>-->
+        <div ng-if="nagger!=null" class="list card">
+            <div class="item item-divider">{{nagger.name}} <br /> ({{nagger.level}})</div>
+            <div class="item item-body">
+                <div>
+                    <ion-list>
+                        <img ng-src="{{nagger.face}}">
+                        <button class="button button-block" ng-click="showConfirm()">
+                            Cancel Nagger
+                        </button>
+                    </ion-list>
+                </div>
+            </div>
+        </div>
+        <ion-list ng-if="nagger==null">
+            <div class="list card">
+                <div class="item item-divider">Choose a Squat Nagger</div>
+                <div class="item item-body">
+                    <ion-list>
+                        <ion-item class="item-thumbnail-left" type="item-text-wrap">
+                            <img ng-src="https://cdnil0.fiverrcdn.com/photos/2170980/original/DSC_6769.jpg?1448408453">
+                            Marin here again. <br /> Let's get started.
+                        </ion-item>
+                        <p>Choose a Squat Nagger from the list below.</p>
+                    </ion-list>
+                </div>
+            </div>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="nagger in naggers" type="item-text-wrap" ng-click="scheduleNagger(nagger.name)">
+                <img ng-src="{{nagger.face}}">
+                {{nagger.name}} <br /> ({{nagger.level}})
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

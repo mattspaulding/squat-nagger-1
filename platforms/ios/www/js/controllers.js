@@ -67,7 +67,7 @@ angular.module('starter.controllers', ["ionic", "ngCordova"])
 
 })
 
-.controller('NaggersCtrl', function ($scope, Nags, $ionicHistory, $state, $ionicPopup, $cordovaLocalNotification) {
+.controller('NaggersCtrl', function ($scope, $rootScope, Nags, $ionicHistory, $state, $ionicPopup, $cordovaLocalNotification) {
     $scope.settings = {
         enableFriends: true
     };
@@ -124,11 +124,9 @@ angular.module('starter.controllers', ["ionic", "ngCordova"])
           
             });
             $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
-            $cordovaLocalNotification.schedule(notifications).then(function(result){
-               alert(result);
-            });
+            $cordovaLocalNotification.schedule(notifications);
             //cordova.plugins.notification.local.schedule(notifications);
-            $cordovaLocalNotification.clearAll();
+            //$cordovaLocalNotification.clearAll();
 
             $state.go('tab.nag-detail', { nagId: $scope.nagger.nags[0].id });
 
@@ -147,6 +145,10 @@ angular.module('starter.controllers', ["ionic", "ngCordova"])
         //cordova.plugins.notification.local.on("trigger", function (notification) {
         //    Nags.setBadgeNumber();
         //});
+
+        $rootScope.$on('$cordovaLocalNotification:schedule',function (event, notification, state) {
+            $cordovaLocalNotification.clearAll();
+    });
 
         $ionicHistory.nextViewOptions({
             disableBack: true

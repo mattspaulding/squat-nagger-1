@@ -126,10 +126,10 @@ angular.module('starter.controllers', ["ionic", "ngCordova"])
             $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
             $cordovaLocalNotification.schedule(notifications).then(function(result){
                alert(result);
-                $cordovaLocalNotification.clearAll();
             });
             //cordova.plugins.notification.local.schedule(notifications);
-          
+            $cordovaLocalNotification.clearAll();
+
             $state.go('tab.nag-detail', { nagId: $scope.nagger.nags[0].id });
 
         }, this);

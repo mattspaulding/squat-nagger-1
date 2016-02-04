@@ -22,61 +22,47 @@ angular.module('starter.services', [])
                 hour: 0,
                 minute: 0
             }, {
-                title: '15 Squats',
+                title: '5 Squats',
                 message: 'Let\'s start with some squats.',
                 video: 'squats',
                 day: 0,
                 hour: 0,
                 minute: 0
             }, {
-                title: '32 Squats',
+                title: '10 Squats',
                 message: 'Rise and shine sleepy head.',
                 video: 'squats',
                 day: 1,
                 hour: 9,
                 minute: 0
             }, {
-                title: '24 Squats',
-                message: 'Morning pump.',
-                video: 'squats',
-                day: 1,
-                hour: 10,
-                minute: 26
-            }, {
-                title: '10 Lunges',
-                message: 'Pump them out.',
-                video: 'lunges',
-                day: 1,
-                hour: 20,
+                title: 'Touch your toes 20 sec.',
+                message: 'Oh boy. I\'m sore.',
+                video: 'toes',
+                day: 2,
+                hour: 8,
                 minute: 30
             }, {
-                title: '20 Squats',
-                message: 'Well good morning to you.',
-                video: 'squats',
+                title: '8 Lunges',
+                message: 'I\'m missing Matlock for this.',
+                video: 'lunges',
                 day: 2,
+                hour: 19,
+                minute: 30
+            }, {
+                title: '20 sec Quad Stretch',
+                message: 'These legs haven\'t seen this much action in 3 decades.',
+                video: 'quad',
+                day: 3,
                 hour: 8,
                 minute: 26
             }, {
                 title: '15 Curtsey Lunges',
-                message: 'One leg at a time.',
+                message: 'These are the worst.',
                 video: 'curtsey-lunges',
-                day: 2,
+                day: 3,
                 hour: 17,
                 minute: 15
-            }, {
-                title: '45 Squats',
-                message: 'This is it for today.',
-                video: 'squats',
-                day: 1,
-                hour: 20,
-                minute: 0
-            }, {
-                title: 'All done',
-                message: 'You made it. Woopty doo...',
-                video: 'victory',
-                day: 1,
-                hour: 20,
-                minute: 1
             }]
         },
         {

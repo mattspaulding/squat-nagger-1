@@ -111,7 +111,7 @@ angular.module('starter.controllers', ["ionic", "ngCordova"])
                 date.setMinutes(nag.minute);
                 date.setSeconds(0);
                 $scope.nagger.nags[index].date = date;
-                var guid = Math.floor((Math.random() * 999999999999999) + 1);
+                var guid = index;//Math.floor((Math.random() * 999999999999999) + 1);
                 $scope.nagger.nags[index].id = guid;
                 var notification = {};
                 notification.id = guid;
@@ -120,12 +120,13 @@ angular.module('starter.controllers', ["ionic", "ngCordova"])
                 notification.date = date;
                 notification.sound = 'file://sounds/cork-pop.wav',
 
-                notifications.push(notification);
+                 notifications.push(notification);
+          
             });
             $scope.nagger = Nags.setCurrentNaggerByName(naggerName);
-            //cordova.plugins.notification.local.schedule(notifications);
             $cordovaLocalNotification.schedule(notifications);
-
+            //cordova.plugins.notification.local.schedule(notifications);
+          
             $state.go('tab.nag-detail', { nagId: $scope.nagger.nags[0].id });
 
         }, this);

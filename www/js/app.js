@@ -6,10 +6,16 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers'])
 
-.run(function ($ionicPlatform) {
-    alert('ionic not yet ready');
+.run(function ($ionicPlatform,$ionicPopup) {
+    $ionicPopup.alert({
+        title: 'not yet',
+        template: 'It might taste good'
+    });
     $ionicPlatform.ready(function () {
-        alert('ionic ready');
+        $ionicPopup.alert({
+            title: 'were in',
+            template: 'It might taste good'
+        });
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {

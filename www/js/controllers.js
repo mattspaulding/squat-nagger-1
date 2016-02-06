@@ -41,8 +41,11 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function ($scope) {
-    alert('playlists');
+.controller('PlaylistsCtrl', function ($scope,$ionicPopup) {
+    $ionicPopup.alert({
+        title: 'Don\'t eat that!',
+        template: 'It might taste good'
+    });
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },

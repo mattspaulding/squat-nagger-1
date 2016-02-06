@@ -1,7 +1,7 @@
 {
-  "name": "squatnagger",
+  "name": "squat-nagger-sidemenu",
   "version": "1.1.1",
-  "description": "Get your butt in shape.",
+  "description": "squat-nagger-sidemenu: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

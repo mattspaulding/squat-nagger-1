@@ -41,14 +41,10 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function ($scope,$ionicPopup) {
-    $ionicPopup.alert({
-        title: 'Don\'t eat that!',
-        template: 'It might taste good'
-    });
+.controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
-    { title: 'Reggaeton', id: 1 },
-    { title: 'Chillstep', id: 2 },
+    { title: 'Reggae', id: 1 },
+    { title: 'Chill', id: 2 },
     { title: 'Dubstep', id: 3 },
     { title: 'Indie', id: 4 },
     { title: 'Rap', id: 5 },
@@ -56,6 +52,5 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('PlaylistCtrl', function ($scope, $stateParams) {
-    $scope.playlistId = $stateParams.playlistId;
+.controller('PlaylistCtrl', function($scope, $stateParams) {
 });

@@ -5,6 +5,6 @@
     <Item Name="VisualStudio" Version="14.0" />
     <Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Community 2015" />
     <Item Name="OperatingSystem" Version="10.0.10586.0 (th2_release.151029-1700)" />
-    <Item Name="ProjectGUID" Value="119a7955-43c1-4a71-85b4-479a0ccd665c" />
+    <Item Name="ProjectGUID" Value="2d78a1ed-1c19-4522-86b8-fa36f3d58bf1" />
   </Metadata>
 </VSBuildInfo>

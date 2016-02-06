@@ -47,7 +47,7 @@ angular.module('starter.controllers', [])
         template: 'It might taste good'
     });
   $scope.playlists = [
-    { title: 'Reggae', id: 1 },
+    { title: 'Reggaeton', id: 1 },
     { title: 'Chill', id: 2 },
     { title: 'Dubstep', id: 3 },
     { title: 'Indie', id: 4 },
